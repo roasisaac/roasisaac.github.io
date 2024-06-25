@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal Entry</title>
+    <script src="https://kit.fontawesome.com/a692e1c39f.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <style>
+        body {
+            background-color: #111111;
+            color: white; /* Assuming text color should be white for contrast */
+        }
+
+        .container {
+            width: 40%;
+            margin: auto; /* Center the container horizontally */
+            background-color: #171717;
+            padding: 20px; /* Add some padding inside the container */
+            position: relative; /* Ensure positioned elements respect this container */
+        margin-bottom: 5%;
+        }
+
+        #journalText {
+            width: 100%;
+            box-sizing: border-box; /* Ensure textarea width includes padding */
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #1e1e1e; /* Match background color of submit button */
+            color: white; /* Text color for textarea */
+            border: 1px solid #333; /* Border color for textarea */
+            border-radius: 5px; /* Rounded corners */
+            resize: vertical; /* Allow vertical resizing of textarea */
+            font-size: 1.2rem; /* Increased font size */
+        }
+
+        .submit-button {
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 5px;
+            padding: 0.5rem 1rem;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 100%; /* Full width button */
+            text-align: center; /* Center text */
+            box-sizing: border-box;
+        }
+
+        .submit-button:hover {
+            background-color: #333; /* Darker background on hover */
+        }
+
+        .b-link {
+            position: absolute;
+            top: 70px;
+            left: 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .b-link::before,
+        .b-link::after {
+            content: '';
+            position: absolute;
+            height: 3px;
+            width: 27px;
+            background-color: white;
+            border-radius: 1px;
+        }
+
+        .b-link::before {
+            transform: rotate(45deg);
+        }
+
+        .b-link::after {
+            transform: rotate(-45deg);
+        }
+
+        .b-link:hover {
+            text-decoration: none;
+        }
+
+        .green-container {
+            background-color:  #cce5ff ; /* Adjust to your desired green color */
+            flex-grow: 1; /* Take up remaining space */
+            margin: 0 10px; /* Adjust spacing */
+            border-radius: 10px;
+            padding: 1rem; /* Add padding for content */
+            width: 70%;
+            margin-left: 15%;
+        }
+
+        .green-container h2 {
+            text-align: center;
+            margin: 0;
+        }
+   
+        hr {
+            border: none;
+            border-top: 1px solid #1e1e1e;
+            margin: 2rem 0; /* Adjusted margins */
+            margin-top: 25%;
+            margin-bottom: -2%;
+        }
+
+        .weather__icons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1em;
+            color: #1e1e1e;
+            margin-bottom: 0.25em;
+        }
+   </style>
+</head>
+<body>
+    <br><br>
+    <div class="container">
+        <a class="b-link" href="/edit"></a> <!-- This is where the backlink is placed -->
+        <div class="green-container">
+            <h2>Kaizen Gemba</h2>
+        </div>
+        <br>
+        <form id="journalForm" action="/submit_journal" method="POST">
+            <textarea id="journalText" name="journalText" placeholder="Write your journal entry here..." rows="10"></textarea>
+            <!-- Hidden input field to store templateId -->
+            <input type="hidden" id="templateId" name="templateId" value="2t1">
+            <div class="submit">
+                <button type="submit" class="submit-button">Submit</button>
+            </div>
+        </form>
+   
+    <hr>
+    <div class="weather__icons">
+        <div class="weather__icon-word" onclick="location.href='/main'; toggleIcon(this)" id="home-icon">
+            <i class="fas fa-home"></i>
+            <p class="weather__word">Home</p>
+        </div>
+        <div class="weather__icon-word" onclick="location.href='/c1'; toggleIcon(this)" id="path-icon">
+            <i class="fas fa-map"></i>
+            <p class="weather__word">Path</p>
+        </div>
+        <div class="weather__icon-word" onclick="location.href='/course'; toggleIcon(this)" id="course-icon">
+            <i class="fas fa-book"></i>
+            <p class="weather__word">Course</p>
+        </div>
+        <div class="weather__icon-word" onclick="location.href='/profile'; toggleIcon(this)" id="profile-icon">
+            <i class="fas fa-user-circle"></i>
+            <p class="weather__word">Profile</p>
+        </div>
+        <div class="weather__icon-word" onclick="location.href='/edit'; toggleIcon(this)" id="edit-icon">
+            <i class="fas fa-edit"></i>
+            <p class="weather__word">Edit</p>
+        </div>
+    </div>
+    <!-- Include any necessary JavaScript scripts -->
+</body>
+</html>
