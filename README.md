@@ -1,5 +1,4 @@
-
-# Project Leadership
+# Project Name
 
 ## Getting Started
 
@@ -53,5 +52,9 @@ The project is built around the idea of the hero’s journey and the linked conc
 
 - **Backend**
   - The backend, built with SQLite, functions adequately, but there are issues with the sign-up process, as profiles can be created in the database but do not function as expected.
+  
+- **Automatic Bookmarking and Filtering**
+  - All created entries shouldnt be automatically bookmarked, but this functionality is not working as intended.
+  - The filter feature is also not functioning correctly.
 
 If you know anyone who could assist with these challenges, it would be greatly appreciated!
