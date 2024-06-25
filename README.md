@@ -5,7 +5,7 @@
 To start the project, follow these steps:
 
 - **Download ZIP**
-  - Download the project ZIP file from the repository.
+  - Download the Project Leadership ZIP file from the repository.
 
 - **Extract**
   - Extract the downloaded ZIP file to your desired location.
