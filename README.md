@@ -20,7 +20,7 @@ To start the project, follow these steps:
 
 ## Project Goal
 
-The goal of this project is to provide a web application that works seamlessly across iPad, iPhone, desktop, and is available on the Play Store.
+The goal of this project is to provide an app that works seamlessly across iPad, iPhone, desktop, and is available on the Play Store.
 
 ## Concept
 
