@@ -1,4 +1,4 @@
-# Project Leadership
+# Project Leadership ⛰️
 
 ## Getting Started
 
