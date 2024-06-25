@@ -58,6 +58,6 @@ Building this project has been an exciting journey, but I'm facing a few challen
 - **Automatic Bookmarking and Filtering**
   - Entries created in the app should be automatically bookmarked, but this feature isn't functioning correctly. Additionally, the filter mechanism needs improvement.
 
-If you have insights or know someone who could assist with these challenges, please reach out to me at [your@email.com](mailto:your@email.com). Your help would be greatly appreciated!
+If you have insights or know someone who could assist with these challenges, please reach out to me at [jorparoad@gmail.com](mailto:jorparoad@gmail.com). Your help would be greatly appreciated!
 
 Thank you for considering how you can contribute to this project's success!
