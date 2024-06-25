@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <style>
+   i{
+    margin-right: 3%;
+   }
+   body{
+        background-color: #111111;
+     }
+   button {
+    background-color: white;
+    color: #202020;
+    font-size: 20px;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    outline: none;
+    width: 100%;
+    display: flex;
+    margin-left: 2%;
+    align-items: center; /* Align items vertically */
+  }
+  .thin-line {
+    position: absolute;
+    top: 123%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border: none;
+    height: 5px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    width: 90%;
+    cursor: pointer;
+  }
+  .content-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 46%;
+    max-height: 90vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #888 #202020;
+  }
+  .image-container {
+    position: relative;
+    border-radius: 10px;
+  }
+  img {
+    width: 108.75%;
+    margin-top: -4.25%;
+    margin-left: -4.5%;
+    border-radius: 10px;
+    display: block;
+  }
+  .resources img {
+    width: 6%;
+  }
+  hr {
+    position: absolute;
+    top: 3%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border: none;
+    height: 10px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    width: 8%;
+    cursor: grab;
+  }
+  .container {
+    background-color: #181818;
+    border-radius: 10px;
+    padding: 20px;
+    width: 40%;
+    text-align: left;
+    margin-top: 0px;
+  }
+  .header {
+    font-family: 'Times New Roman', serif;
+    font-size: 24px;
+    margin-top: 0;
+  }
+  .content-wrapper::-webkit-scrollbar {
+    width: 8px;
+  }
+  .content-wrapper::-webkit-scrollbar-track {
+    background: #202020;
+  }
+  .content-wrapper::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+    border: 2px solid #202020;
+  }
+  a {
+    text-decoration: none;
+    color: #FFFFFF;
+  }
+  .white-icon {
+    color: white;
+    margin-right: 10px; /* Add margin to separate icon and text */
+    margin-left: 10px; /* Add margin to the left of the icon */
+  }
+  .weather__icons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.75em;
+            color: #1e1e1e;
+        }
+
+        .weather__icons i {
+            transition: color 0.3s ease;
+        }
+
+        .weather__icons i.active {
+            color: white;
+        }
+ .mr
+  {
+            margin-top: 6%;
+            border: none;
+            border-top: 1px solid #1e1e1e; /* Add a solid border top */
+            margin-left: -7%;
+            width: 114.5%;
+        }
+
+ }
+ 
+ </style>
+</head>
+<body>
+   <br><br><br>
+  <div class="container">
+        <div class="image-container">
+            <img src="../static/img/Low.png" alt="Descriptive Image Text">
+            <hr id="redirectLine">
+        </div>
+       <br>
+        <h1>Header</h1>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. </p>
+       <br>
+        <button class="white-icon" style="margin-bottom: 10px;background-color: #1e1e1e;"><i class="fas fa-smile"></i> Will</button>
+        <button class="white-icon" style="margin-bottom: 10px;background-color: #1e1e1e;"><i class="fas fa-stopwatch"></i> 0 mins </button>
+        <button style="margin-bottom: 10px; background-color: white;justify-content: center;"><i class="fas fa-play"></i></button>
+       <br>
+        <div class="weather__icons">
+          <div class="weather__icon-word" onclick="location.href='/main'; toggleIcon(this)" id="home-icon">
+              <i class="fas fa-home"></i>
+              <p class="weather__word">Home</p>
+          </div>
+          <div class="weather__icon-word" onclick="location.href='/c1'; toggleIcon(this)" id="path-icon">
+              <i class="fas fa-map"></i>
+              <p class="weather__word">Path</p>
+          </div>
+          <div class="weather__icon-word" onclick="location.href='/course'; toggleIcon(this)" id="course-icon">
+              <i class="fas fa-book"></i>
+              <p class="weather__word">Course</p>
+          </div>
+          <div class="weather__icon-word" onclick="location.href='/profile'; toggleIcon(this)" id="profile-icon">
+              <i class="fas fa-user-circle"></i>
+              <p class="weather__word">Profile</p>
+          </div>
+          <div class="weather__icon-word" onclick="location.href='/edit'; toggleIcon(this)" id="edit-icon">
+              <i class="fas fa-edit"></i>
+              <p class="weather__word">Edit</p>
+          </div>
+      </div>
+    <script src="https://kit.fontawesome.com/a692e1c39f.js" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+</body>
+</html>

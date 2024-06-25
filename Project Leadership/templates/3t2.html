@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal Entry</title>
+    <script src="https://kit.fontawesome.com/a692e1c39f.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <style>
+        body {
+            background-color: #111111;
+            font-family: 'Arial', sans-serif;
+        }
+
+        :root {
+            --cards: 4;
+            --cardHeight: 60vh;  /* Reduced card height */
+            --cardTopPadding: 1.5em;
+            --cardMargin: 4vw;
+        }
+
+        .green-container {
+            background-color: #405730;
+            width: 100%; /* Make it consistent and full width */
+            height: 35%;
+            border-radius: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+       margin-top: -29%;
+        }
+
+        .container {
+            width: 40%;
+            margin: 0 auto;
+            background-color: #171717;
+            position: relative;
+        }
+
+        #cards {
+            list-style: none;
+            padding-left: 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(var(--cards), var(--cardHeight));
+            gap: var(--cardMargin);
+            padding-bottom: calc(var(--cards) * var(--cardTopPadding));
+            margin-bottom: var(--cardMargin);
+        }
+
+        #card1 {
+            --index: 1;
+        }
+
+        #card2 {
+            --index: 2;
+        }
+
+        #card3 {
+            --index: 3;
+        }
+
+        #card4 {
+            --index: 4;
+        }
+
+        .card {
+            position: sticky;
+            top: 0;
+            padding-top: calc(var(--index) * var(--cardTopPadding));
+        }
+
+        .card-body {
+            background-color: #ffffff;
+            width: 90%;
+            height: 70%; /* Adjusted to be consistent with the new card height */
+            margin-left: 5%;
+            color: #000;
+            box-sizing: border-box;
+            padding: 30px;
+            border-radius: 50px;
+            box-shadow: 0 0 30px 0 rgba(0,0,0,0.3);
+            height: var(--cardHeight); /* Applied the new card height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.5s;
+            flex-direction: column;
+        }
+
+        h2 {
+            font-size: 2.5em;
+        }
+
+        h5 {
+            margin-top: 5%;
+            font-size: 1.75em;
+            color: white;
+        }
+
+        .b-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .b-link::before,
+        .b-link::after {
+            content: '';
+            position: absolute;
+            height: 3px;
+            width: 27px;
+            background-color: white;
+            border-radius: 1px;
+        }
+
+        .b-link::before {
+            transform: rotate(45deg);
+            top: 8px;
+            left: 0;
+        }
+
+        .b-link::after {
+            transform: rotate(-45deg);
+            top: 8px;
+            left: 0;
+        }
+
+        .b-link:hover {
+            text-decoration: none;
+        }
+
+        hr {
+            margin-top: 50%;
+            border: 5px;
+            border-top: 2px solid #ccc;
+            width: 117.5%; /* Match the width of the card body */
+        }
+
+        .italic-text {
+            font-style: italic;
+            color: #ccc;
+            text-align: center;
+            margin-top: 0.5em;
+        }
+
+        .weather__icons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.75em;
+            color: #1e1e1e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <br>
+        <a class="b-link" href="/edit"></a> 
+        <ul id="cards">
+            <li class="card" id="card1">
+                <div class="card-body">
+                    <div class="green-container">
+                        <h5>How are u wired </h5>
+                    </div>
+                    <hr>
+                    <p class="italic-text">Orginally edited 12th of October in 2012</p>
+                </div>
+            </li>
+            <li class="card" id="card2">
+                <div class="card-body">
+                    <div class="green-container">
+                        <h5>Ego</h5>
+                    </div>
+                    <hr>
+                    <p class="italic-text">Orginally edited 14th of November in 2013</p>
+                </div>
+            </li>
+            <li class="card" id="card3">
+                <div class="card-body">
+                    <div class="green-container">
+                        <h5>Life-Arc</h5>
+                    </div>
+                    <hr>
+                    <p class="italic-text">Orginally edited 5th of December in 2014</p>
+                </div>
+            </li>
+            <li class="card" id="card4">
+                <div class="card-body">
+                    <div class="green-container">
+                        <h5>5 Step</h5>
+                    </div>
+                    <hr>
+                    <p class="italic-text">Orginally edited 20th of January in 2015</p>
+                </div>
+            </li>
+        </ul>
+        <hr style="border-top: 1px solid #1e1e1e; margin-top: 5%;"> <!-- Changed to solid line -->
+        <div class="weather__icons">
+            <div class="weather__icon-word" onclick="location.href='/main'; toggleIcon(this)" id="home-icon">
+                <i class="fas fa-home"></i>
+                <p class="weather__word">Home</p>
+            </div>
+            <div class="weather__icon-word" onclick="location.href='/c1'; toggleIcon(this)" id="path-icon">
+                <i class="fas fa-map"></i>
+                <p class="weather__word">Path</p>
+            </div>
+            <div class="weather__icon-word" onclick="location.href='/course'; toggleIcon(this)" id="course-icon">
+                <i class="fas fa-book"></i>
+                <p class="weather__word">Course</p>
+            </div>
+            <div class="weather__icon-word" onclick="location.href='/profile'; toggleIcon(this)" id="profile-icon">
+                <i class="fas fa-user-circle"></i>
+                <p class="weather__word">Profile</p>
+            </div>
+            <div class="weather__icon-word" onclick="location.href='/edit'; toggleIcon(this)" id="edit-icon">
+                <i class="fas fa-edit"></i>
+                <p class="weather__word">Edit</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function toggleIcon(element) {
+            // Add any toggle functionality here if needed
+        }
+    </script>
+</body>
+</html>

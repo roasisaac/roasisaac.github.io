@@ -1,0 +1,118 @@
+* {
+  font-family: "Poppins";
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #111111;
+  height: 100%;
+  padding: 1rem;
+  overflow-y: scroll;
+}
+
+
+.screen-1 {
+  background: #171717;
+  color: #fff;
+  padding: 2rem;
+width: 515px; /* Responsive width */
+  margin: 4rem auto;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* Increased gap for better spacing */
+
+}
+
+.screen-1 .logo {
+  align-self: center;
+}
+
+.screen-1 .email, .screen-1 .password {
+  background: #171717;  /* Ensure consistent background color */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Added shadow */
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-radius: 10px;
+  color: #cfcfcf;
+  width: 100%;  /* Set width to 100% */
+  margin-bottom: 1rem; /* Add margin for spacing between sections */
+}
+
+.screen-1 .email {
+  margin-bottom: 1.5rem; /* More margin between email and password */
+}
+
+.screen-1 .email input, .screen-1 .password input {
+  outline: none;
+  border: none;
+  background: #1e1e1e;
+  color: #cfcfcf;
+  padding: 0.5rem;
+  border-radius: 5px;
+  width: 100%;  /* Set width to 100% */
+}
+
+.screen-1 .email input::-moz-placeholder, .screen-1 .password input::-moz-placeholder {
+  color: #cfcfcf;
+  font-size: 0.9em;
+}
+
+.screen-1 .email input:-ms-input-placeholder, .screen-1 .password input:-ms-input-placeholder {
+  color: #cfcfcf;
+  font-size: 0.9em;
+}
+
+.screen-1 .email input::placeholder, .screen-1 .password input::placeholder {
+  color: #cfcfcf;
+  font-size: 0.9em;
+}
+
+.screen-1 .email ion-icon, .screen-1 .password ion-icon {
+  color: #cfcfcf;
+  margin-bottom: -0.2em;
+}
+
+.screen-1 .password .show-hide {
+  cursor: pointer;
+}
+
+.screen-1 .login {
+  padding: 1rem;
+  background: rgb(0, 100, 180);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;  /* Set width to 100% */
+  margin-top: 1rem; /* Add margin for spacing */
+}
+
+.screen-1 .footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8em; /* Increased font size for better readability */
+  color: #5e5e5e;
+  padding-top: 1rem;
+}
+
+.screen-1 .footer span {
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
+}

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Journal Entries</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+        }
+        .entry-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+        .entry-card .header {
+            background-color: #c1c1ac ;
+            color: #fff;
+            padding: 15px;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        .entry-card .content {
+            padding: 15px;
+            font-size: 1em;
+        }
+        .entry-card .footer {
+            background-color: #ffffff;
+            color: #dedddd;
+            padding: 10px;
+            font-size: 0.9em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .entry-card .actions {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        .entry-card .actions .menu {
+            cursor: pointer;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+        }
+        .entry-card .actions .menu div {
+            width: 4px;
+            height: 4px;
+            background-color: #dedddd;
+            border-radius: 50%;
+            margin: 2px;
+        }
+        .entry-card .actions-menu {
+            display: none;
+            flex-direction: column;
+            background-color: #ffffff;
+            color: black;
+            border-radius: 5px;
+            position: absolute;
+            top: -85px;
+            right: 0px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            border-radius: 10px;
+        }
+        .entry-card .actions-menu a {
+            color: #000000;
+            background-color: #ffffff;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+            font-size: 0.9em;
+            border-radius: 10px;
+        }
+        .edit-form {
+            display: none;
+            padding: 10px;
+        }
+        .edit-form textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+        .btn {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 10px 20px;
+            border: 1px black solid;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        hr {
+            width: 95%;
+            background-color: #f0f0f0;
+            height: 1px;
+            margin: 20px 0;
+            border: none;
+            margin-left: 2%;
+        }
+        .bookmark-icon {
+            font-size: 1.2em;
+            cursor: pointer;
+            color: #8f2707;
+            display: none;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Journal Entries</h1>
+        {% if entries %}
+            {% for entry in entries %}
+                <div class="entry-card" id="entry-card-{{ entry[0] }}">
+                    {% if entry[2] == '1t1' %}
+                        <div class="header">5-Step Process for Goals</div>
+                        {% endif %}
+                        {% if entry[2] == '1t2' %}
+                        <div class="header">Write Principle</div>
+                        {% endif %}
+                        {% if entry[2] == '1t3' %}
+                        <div class="header">How to go from case to principle</div>
+                        {% endif %}
+                        {% if entry[2] == '1t4' %}
+                        <div class="header">Crucial Conversations</div>
+                        {% endif %}
+                        {% if entry[2] == '2t1' %}
+                        <div class="header" style="background-color:#cce5ff ;">Kaizen Gemba</div>
+                        {% endif %}
+                        {% if entry[2] == '2t2' %}
+                        <div class="header" style="background-color:#cce5ff ;">Communication-Fundamentals</div>
+                        {% endif %}
+                        {% if entry[2] == '2t3' %}
+                        <div class="header" style="background-color:#cce5ff ;">Additional</div>
+                        {% endif %}
+                        <div class="content">{{ entry[3] }}</div>
+                    <hr>
+                    <div class="footer">
+                        <div>{{ entry[4] }}</div>
+                        <div class="actions">
+                            <i class="fas fa-bookmark bookmark-icon" id="bookmark-icon-{{ entry[0] }}"></i>
+                            <div class="menu" data-entry-id="{{ entry[0] }}" aria-label="Toggle actions menu">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                            <div class="actions-menu" id="entry-actions-{{ entry[0] }}">
+                                <a href="javascript:void(0)" onclick="bookmarkEntry({{ entry[0] }})">Bookmark</a>
+                                <a href="{{ url_for('delete_entry', entry_id=entry[0]) }}">Delete</a>
+                                <a href="javascript:void(0)" onclick="showEditForm({{ entry[0] }})">Edit</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form class="edit-form" id="edit-form-{{ entry[0] }}" action="{{ url_for('edit_entry', entry_id=entry[0]) }}" method="post">
+                    <textarea name="journalText">{{ entry[3] }}</textarea>
+                    <button type="submit" class="btn">Update</button>
+                </form>
+            {% endfor %}
+        {% else %}
+            <p>No journal entries found.</p>
+        {% endif %}
+        <a class="back-link" href="{{ url_for('main_page') }}">Back to Main Page</a>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize bookmark state from localStorage
+            initializeBookmarks();
+
+            document.addEventListener('click', function(e) {
+                if (e.target && e.target.classList.contains('menu')) {
+                    const entryId = e.target.dataset.entryId;
+                    toggleMenu(entryId);
+                    e.stopPropagation(); // Prevents document click event from immediately closing the menu
+                } else {
+                    closeAllMenus();
+                }
+            });
+        });
+
+        function initializeBookmarks() {
+            var entries = document.querySelectorAll('.entry-card');
+            entries.forEach(entry => {
+                var entryId = entry.id.split('-')[2];
+                if (localStorage.getItem('bookmark-' + entryId) === 'true') {
+                    var bookmarkIcon = document.getElementById('bookmark-icon-' + entryId);
+                    bookmarkIcon.style.display = 'inline';
+                }
+            });
+        }
+
+        function toggleMenu(entryId) {
+            var menu = document.getElementById('entry-actions-' + entryId);
+            var menuIcon = document.querySelector('.menu[data-entry-id="' + entryId + '"]');
+            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+            menuIcon.classList.toggle('open');
+        }
+
+        function closeAllMenus() {
+            var menus = document.querySelectorAll('.actions-menu');
+            var menuIcons = document.querySelectorAll('.menu');
+            menus.forEach(menu => menu.style.display = 'none');
+            menuIcons.forEach(menuIcon => menuIcon.classList.remove('open'));
+        }
+
+        function showEditForm(entryId) {
+            var form = document.getElementById('edit-form-' + entryId);
+            form.style.display = form.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function bookmarkEntry(entryId) {
+            var bookmarkIcon = document.getElementById('bookmark-icon-' + entryId);
+            if (bookmarkIcon.style.display === 'inline') {
+                bookmarkIcon.style.display = 'none';
+                localStorage.setItem('bookmark-' + entryId, 'false');
+            } else {
+                bookmarkIcon.style.display = 'inline';
+                localStorage.setItem('bookmark-' + entryId, 'true');
+            }
+            closeAllMenus(); // Close menu after bookmarking
+        }
+    </script>
+</body>
+</html>

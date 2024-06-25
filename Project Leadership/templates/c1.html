@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journey App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-dLGRWfha7feEaJq6mI+ovD9PmKUBQyNP5OPrsF4/JF/ieaKbA7qN6fM4yht2DOmwrj0VNS9dcaB/WFxljjYBaw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 300vh; /* Increase body height for scrolling */
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #111111;
+        }
+
+        .outer-container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative; /* Added relative positioning */
+        }
+
+        .container {
+            position: relative;
+            width: 40%;
+            height: 230vh; /* Increase container height */
+            border: 1px solid #171717;
+            border-radius: 10px;
+            background-color: #171717;
+        }
+
+        .curvy-line {
+            position: absolute;
+            width: 100%;
+            height: 80%;
+            color: #1e1e1e;
+        }
+
+        .checkpoint {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            color: #1e1e1e;
+            background:#1e1e1e ;
+            border: 2px solid #1e1e1e;
+            border-radius: 50%;
+            transition: background 0.3s ease, transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .checkpoint.active {
+            background: rgb(0, 100, 180);
+            transform: scale(1.2);
+        }
+
+        .content {
+            position: absolute;
+            width: 50%;
+            padding: 5%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            background: #1e1e1e; /* Changed background color */
+            color: white; /* Changed font color */
+            border: 1px solid #1e1e1e;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top:5%; /* Added space beneath each content */
+            left: calc(10% + 20px); /* Added to position content to the right of checkpoint */
+            top: 50%; /* Center content vertically */
+            transform: translateY(-50%);
+        }
+
+        .content.active {
+            opacity: 1;
+        }
+
+        .content i {
+            font-size: 15%;
+            color: #1e1e1e;
+            margin-bottom: 3%;
+        }
+
+        .button {
+            background-color: rgb(0, 100, 180);
+            border: none;
+            color: white;
+            font-size: 85%;
+            cursor: pointer;
+            padding: 5%;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: rgb(0, 120, 200);
+        }
+
+        .subheader {
+            font-weight: bold;
+            font-size: 115%;
+            color: #ffffff;
+            margin-bottom: 3%;
+        }
+
+        .stars-lines-container {
+            position: relative;
+        }
+
+        
+
+        h2 {
+            color: #ffffff;
+        }
+
+        hr {
+            margin-top: 243%;
+            border: none;
+            border-top: 1px solid #1e1e1e; /* Add a solid border top */
+            margin-left: 0%;
+            width: 100%;
+        }
+
+        .weather__icons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.75em;
+            color: #1e1e1e;
+            margin-left: 6.5%;
+            margin-right: 5%;
+        }
+
+        .weather__icons i {
+            transition: color 0.3s ease;
+        }
+
+        .weather__icons i.active {
+            color: white;
+        }
+
+        /* Added styles for the words */
+        .weather__word {
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: color 0.3s ease;
+        }
+
+        .weather__word.active {
+            color: white;
+        }
+        #checkpoint1 {
+            left: 50%;
+            top: 10%;
+        }
+
+        #checkpoint2 {
+            left: 50.5%;
+            top: 25%;
+        }
+
+        #checkpoint3 {
+            left: 48%;
+            top: 35%;
+        }
+
+        #checkpoint4 {
+            left:44.5%;
+top: 45%;
+}
+#checkpoint5 {
+        left: 42%;
+        top: 55%;
+    }
+
+    #checkpoint6 {
+        left: 41%;
+        top: 65%;
+    }
+
+    #checkpoint7 {
+        left: 42%;
+        top: 75%;
+    }
+
+    /* Adjusted content positions */
+    #content1 {
+        left: calc(10% + 20px);
+        top: 10%;
+        transform: translateY(-50%);
+    }
+
+    #content2 {
+        left: calc(10% + 20px);
+        top: 25%;
+        transform: translateY(-50%);
+    }
+
+    #content3 {
+        left: calc(10% + 20px);
+        top: 35%;
+        transform: translateY(-50%);
+    }
+
+    #content4 {
+        left: calc(10% + 20px);
+        top: 45%;
+        transform: translateY(-50%);
+    }
+
+    #content5 {
+        left: calc(10% + 20px);
+        top: 55%;
+        transform: translateY(-50%);
+    }
+
+    #content6 {
+        left: calc(10% + 20px);
+        top: 65%;
+        transform: translateY(-50%);
+    }
+
+    #content7 {
+        left: calc(10% + 20px);
+        top: 75%;
+        transform: translateY(-50%);
+    }
+</style>
+</head>
+<body>
+    <div class="outer-container">
+        <div class="container">
+            <svg class="curvy-line" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path id="curvyPathBackground" d="M 50 0 Q 60 25 50 50 T 50 100" stroke="#1e1e1e" stroke-width="2" fill="transparent"/>
+                <path id="curvyPathForeground" d="M 50 0 Q 60 25 50 50 T 50 100" stroke="rgb(0, 100, 180)" stroke-width="2" fill="transparent" stroke-dasharray="0, 100" />
+            </svg>
+            <div class="checkpoint" id="checkpoint1"></div>
+            <div class="checkpoint" id="checkpoint2"></div>
+            <div class="checkpoint" id="checkpoint3"></div>
+            <div class="checkpoint" id="checkpoint4"></div>
+            <div class="checkpoint" id="checkpoint5"></div>
+            <div class="checkpoint" id="checkpoint6"></div>
+            <div class="checkpoint" id="checkpoint7"></div>
+            <br>
+            <hr>
+            <div class="weather__icons">
+                <div class="weather__icon-word" onclick="location.href='/main'; toggleIcon(this)" id="home-icon">
+                    <i class="fas fa-home"></i>
+                    <p class="weather__word">Home</p>
+                </div>
+                <div class="weather__icon-word" onclick="location.href='/c1'; toggleIcon(this)" id="path-icon">
+                    <i class="fas fa-map"></i>
+                    <p class="weather__word">Path</p>
+                </div>
+                <div class="weather__icon-word" onclick="location.href='/course'; toggleIcon(this)" id="course-icon">
+                    <i class="fas fa-book"></i>
+                    <p class="weather__word">Course</p>
+                </div>
+                <div class="weather__icon-word" onclick="location.href='/profile'; toggleIcon(this)" id="profile-icon">
+                    <i class="fas fa-user-circle"></i>
+                    <p class="weather__word">Profile</p>
+                </div>
+                <div class="weather__icon-word" onclick="location.href='/edit'; toggleIcon(this)" id="edit-icon">
+                    <i class="fas fa-edit"></i>
+                    <p class="weather__word">Edit</p>
+                </div>
+          
+            <div class="content" id="content1">
+                <div class="megaphone-content">
+                    <i class="fas fa-bullhorn"></i>
+                    <h2 class="subheader">Call to Adventure</h2>
+                    <button class="button">Learn More</button>
+                </div>
+            </div>
+            <div class="content" id="content2">
+                <i class="fas fa-users"></i>
+                <h2 class="subheader">How to Inspire Action</h2>
+                <div class="group-content">
+                 
+                </div>
+                <button class="button">Learn More</button>
+            </div>
+            <div class="content" id="content3">
+                <i class="fas fa-compass"></i>
+                <h2 class="subheader">How to Deal with Reality</h2>
+                <button class="button">Learn More</button>
+            </div>
+            <div class="content" id="content4">
+                <i class="fas fa-users-cog"></i>
+                <h2 class="subheader">Team-Building Ability</h2>
+                <button class="button">Learn More</button>
+            </div>
+            <div class="content" id="content5">
+                <i class="fas fa-comments"></i>
+                <h2 class="subheader">Communication</h2>
+                <button class="button">Learn More</button>
+            </div>
+            <div class="content" id="content6">
+                <i class="fas fa-calendar"></i>
+                <h2 class="subheader">Your Hero</h2>
+                <button class="button">Learn More</button>
+            </div>
+            <div class="content" id="content7">
+                <h2 class="subheader">How to Finish Your Hero's Journey</h2>
+                <i class="fas fa-chart-bar"></i>
+                <button class="button">Learn More</button>
+            </div>
+        </div>
+    </div>
+    <script>
+          function setActiveIcon() {
+        const currentPage = window.location.pathname.split('/').pop();
+        switch (currentPage) {
+            case 'index.html':
+                document.getElementById('home-icon').classList.add('active');
+                document.getElementById('home-icon').querySelector('i').classList.add('active');
+                document.getElementById('home-icon').querySelector('.weather__word').classList.add('active');
+                break;
+            case 'c1.html':
+                document.getElementById('path-icon').classList.add('active');
+                document.getElementById('path-icon').querySelector('i').classList.add('active');
+                document.getElementById('path-icon').querySelector('.weather__word').classList.add('active');
+                break;
+            case 'course.html':
+                document.getElementById('course-icon').classList.add('active');
+                document.getElementById('course-icon').querySelector('i').classList.add('active');
+                document.getElementById('course-icon').querySelector('.weather__word').classList.add('active');
+                break;
+            case 'profile.html':
+                document.getElementById('profile-icon').classList.add('active');
+                document.getElementById('profile-icon').querySelector('i').classList.add('active');
+                document.getElementById('profile-icon').querySelector('.weather__word').classList.add('active');
+                break;
+            default:
+                break;
+        }
+    }
+     
+     document.addEventListener('scroll', () => {
+          const progressBar = document.getElementById('progressBarGettingStarted');
+          const lastSection = document.querySelector('.last-section');
+          const windowHeight = window.innerHeight;
+          const fullHeight = document.body.scrollHeight;
+          const scrolled = window.scrollY;
+          const sectionTop = lastSection.offsetTop;
+          
+          // Calculate progress based on the scroll position relative to the top of the page
+          let progress = (scrolled / (fullHeight - windowHeight)) * 100;
+          progress = Math.min(Math.max(progress, 0), 100); // Ensure progress is between 0 and 100
+  
+          progressBar.style.height = `${progress}%`;
+      });
+      window.onload = setActiveIcon;
+ 
+    document.addEventListener('scroll', () => {
+        const pathForeground = document.getElementById('curvyPathForeground');
+        const checkpoints = document.querySelectorAll('.checkpoint');
+        const contents = document.querySelectorAll('.content');
+        const scrollPosition = window.scrollY + window.innerHeight / 2;
+
+        checkpoints.forEach((checkpoint, index) => {
+            const checkpointPosition = checkpoint.getBoundingClientRect().top + window.scrollY;
+            const nextCheckpointPosition = checkpoints[index + 1]
+                ? checkpoints[index + 1].getBoundingClientRect().top + window.scrollY
+                : Number.POSITIVE_INFINITY;
+
+            const isActive = scrollPosition >= checkpointPosition && scrollPosition < nextCheckpointPosition;
+            if (isActive) {
+                checkpoint.classList.add('active');
+            }
+            contents[index].classList.toggle('active', isActive);
+        });
+
+        const pathLength = pathForeground.getTotalLength();
+        const scrollPercent = (scrollPosition - window.innerHeight / 2) / (document.body.scrollHeight - window.innerHeight);
+        const drawLength = pathLength * scrollPercent;
+        pathForeground.style.strokeDasharray = `${drawLength}, ${pathLength}`;
+    });
+</script>
+<script src="https://kit.fontawesome.com/a692e1c39f.js" crossorigin="anonymous"></script>
+</body>
+</html>
+    
