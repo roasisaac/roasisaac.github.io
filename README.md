@@ -1,4 +1,4 @@
-# Project Leadership ⛰️
+# Project Name
 
 ## Getting Started
 
@@ -20,7 +20,7 @@ To start the project, follow these steps:
 
 ## Project Goal
 
-The goal of this project is to provide an app that works seamlessly across iPad, iPhone, desktop, and is available on the Play Store.
+The goal of this project is to provide a web application that works seamlessly across iPad, iPhone, desktop, and is available on the Play Store.
 
 ## Concept
 
@@ -42,19 +42,22 @@ The project is built around the idea of the hero’s journey and the linked conc
 - **Action Page**
   - The final page is dedicated to action, where users can practice leadership through templates and/or exercises.
 
-## Challenges and Assistance Needed
+## Challenges and How You Can Help
 
-- **Compatibility with Different Formats**
-  - Ensuring compatibility across smartphones, iPads, desktops, etc., raises the question of whether HTML and CSS are sufficient tools for building this application.
+Building this project has been an exciting journey, but I'm facing a few challenges that could use your expertise and support:
 
-- **Design**
-  - Despite efforts to create a good design using HTML, CSS, and JavaScript, the results have been unsatisfactory.
+- **Compatibility Across Devices**
+  - I want the app to work seamlessly on smartphones, iPads, and desktops. Do you have experience with responsive design and cross-platform compatibility?
 
-- **Backend**
-  - The backend, built with SQLite, functions adequately, but there are issues with the sign-up process, as profiles can be created in the database but do not function as expected.
-  
+- **Design Refinement**
+  - Despite my efforts with HTML, CSS, and JavaScript, the design isn't meeting my expectations. Any tips for improving user interface and experience?
+
+- **Backend Functionality**
+  - While SQLite serves as the database, there are issues with user sign-up and profile management. I need help ensuring these functions work smoothly.
+
 - **Automatic Bookmarking and Filtering**
-  - All created entries shouldnt be automatically bookmarked, but this functionality is not working as intended.
-  - The filter feature is also not functioning correctly.
+  - Entries created in the app should be automatically bookmarked, but this feature isn't functioning correctly. Additionally, the filter mechanism needs improvement.
 
-If you know anyone who could assist with these challenges, it would be greatly appreciated!
+If you have insights or know someone who could assist with these challenges, please reach out to me at [your@email.com](mailto:your@email.com). Your help would be greatly appreciated!
+
+Thank you for considering how you can contribute to this project's success!
